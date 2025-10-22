@@ -5,7 +5,7 @@
 **项目名称**：跑步记录助手  
 **项目类型**：Android移动应用  
 **开发模式**：原生Android开发（Java + Kotlin混合）  
-**主要功能**：GPS跑步轨迹记录、运动数据分析、历史记录管理
+**主要功能**：GPS跑步轨迹记录、运动数据分析、历史记录管理、登录注册、社区基础功能
 
 ---
 
@@ -38,30 +38,49 @@
 app/
 ├── src/main/
 │   ├── java/com/example/myapplication/
-│   │   ├── MainActivity.java          # 主运行界面
-│   │   ├── HistoryActivity.java       # 历史记录界面
-│   │   ├── DetailActivity.java        # 详情展示界面
-│   │   ├── RunForegroundService.java  # 后台定位服务
-│   │   ├── RunRecordAdapter.java      # 列表适配器
-│   │   └── RunRecord.java             # Java数据模型
-│   ├── kotlin/com/example/myapplication/
-│   │   ├── RunRecordEntity.kt         # 数据库实体
-│   │   ├── RunRecordDao.kt            # 数据访问接口
-│   │   └── AppDatabase.kt             # 数据库管理
+│   │   ├── Run_Record_HistoryLog
+│   │   │   ├── AppDatabase.kt                  # 数据库管理
+│   │   │   ├── RunRecordAdapter.java           # 列表适配器
+│   │   │   ├── MainActivity.java               # 主运行界面
+│   │   │   ├── HistoryActivity.java            # 历史记录界面
+│   │   │   ├── DetailActivity.java             # 详情展示界面
+│   │   │   ├── RunForegroundService.java       # 后台定位服务
+│   │   │   ├── RunRecordDao.kt                 # 数据访问接口
+│   │   │   ├── RunRecordEntity.kt              # 数据库实体
+│   │   │   └── RunRecord.java                  # Java数据模型
+│   │   └── Register_Login_Blog
+│   │       ├── Blog.kt                         # Blog类
+│   │       ├── BlogAdapter.java                # ListView适配器
+│   │       ├── MainActivity1.kt                # 登录界面
+│   │       ├── MainPage.kt                     # 主页
+│   │       ├── MyListView.kt                   # ListView重写
+│   │       ├── MySqliteOpenHelper.java         # SqliteOpenHelper类重写
+│   │       ├── MySqliteOpenHelper_blog.java    # SqliteOpenHelper类重写
+│   │       ├── PostBlog.java                   # 发布帖子功能
+│   │       └── RegisterActivity.kt             # 注册界面
 │   └── res/
 │       ├── layout/
-│       │   ├── activity_main.xml      # 主界面布局
-│       │   ├── activity_history.xml   # 历史界面布局
-│       │   ├── activity_detail.xml    # 详情界面布局
-│       │   └── item_run_record.xml    # 列表项布局
-│       └── AndroidManifest.xml        # 应用配置
+│       │   ├── activity_main1.xml      # 登录界面布局
+│       │   ├── activity_register.xml   # 注册界面布局
+│       │   ├── blog_item.xml           # 帖子界面布局
+│       │   ├── blog_item_nopic.xml     # 无图片帖子界面布局
+│       │   ├── blog_post.xml           # 发布帖子界面布局
+│       │   ├── activity_main2.xml      # 跑步界面布局
+│       │   ├── main_page.xml           # 主界面布局
+│       │   ├── activity_history.xml    # 历史界面布局
+│       │   ├── activity_detail.xml     # 详情界面布局
+│       │   └── item_run_record.xml     # 列表项布局
+│       ├── menu/
+│       │   ├── toolbar_menu.xml      # toolbar界面布局
+│       └── AndroidManifest.xml         # 应用配置
+
 ```
 
 ---
 
 ## 核心功能模块
 
-### 实时跑步记录模块
+### 1实时跑步记录模块
 **文件**：`MainActivity.java`
 ```java
 功能列表：
@@ -185,7 +204,7 @@ LocalBroadcastManager.getInstance(this).sendBroadcast(i);
 # 确保已安装：
 # - Android Studio
 # - Android SDK 33
-# - Java 8/11
+# - Java 17
 ```
 
 ### 2. 依赖安装
